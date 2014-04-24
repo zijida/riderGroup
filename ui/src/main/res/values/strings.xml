@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RiderGroup</string>
+    <string name="app_name_cn">骑士团</string>
+    <string name="regist_flip">跳过并完成</string>
+    <string name="action_settings">Settings</string>
+    <string name="warning_username">用户名不可少于6个字符</string>
+    <string name="warning_password">密码不可少于6个字符</string>
+    <string name="warning_flipping">你确定要跳过完善设置？</string>
+
+</resources>

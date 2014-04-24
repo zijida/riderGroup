@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/layout_title">
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_back"
+            android:src="@drawable/back"
+            android:background="@null"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_zhanghao"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_user_name"
+        android:textColor="#464646"
+        android:textSize="20sp"
+        android:layout_below="@+id/layout_title"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/input"
+        android:layout_marginTop="110dp"
+        android:hint="用户名"
+        android:paddingLeft="20dp"
+        android:textIsSelectable="false"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_password"
+        android:layout_below="@+id/textview_user_name"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/input"
+        android:textColor="#464646"
+        android:textSize="20dp"
+        android:hint="密码"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textPassword"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:singleLine="true">
+    </EditText>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_enter"
+        android:src="@drawable/enter"
+        android:background="@null"
+        android:layout_alignParentRight="false"
+        android:layout_marginRight="10dp"
+        android:layout_alignRight="@+id/textview_password"
+        android:layout_alignTop="@+id/textview_password"
+        android:layout_marginTop="20dp" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_password"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录骑士团表示您同意"
+            android:textColor="#787878"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_user_protocal"
+            android:text="用户协议"
+            android:textColor="#a2cd39"
+            android:textSize="16dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/button_regist"
+            android:src="@drawable/regist"
+            android:background="@null"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/button_forgetpassword"
+            android:src="@drawable/forget"
+            android:background="@null"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+    </LinearLayout>
+</RelativeLayout>

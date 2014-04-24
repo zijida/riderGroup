@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/layout_title">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_back"
+            android:src="@drawable/back"
+            android:background="@null" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_nipper"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_nickname"
+        android:textColor="#464646"
+        android:textSize="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/layout_title"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/input"
+        android:layout_marginTop="110dp"
+        android:hint="昵称"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:singleLine="true" />
+
+    <include layout="@layout/arrow_next"/>
+</RelativeLayout>

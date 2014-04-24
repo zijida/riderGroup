@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guide_1_1"
+        android:background="@drawable/guide_1"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guide_1_2"
+        android:background="@drawable/mabiao"
+        android:layout_below="@+id/guide_1_1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guide_1_3"
+        android:layout_below="@+id/guide_1_2"
+        android:background="@drawable/mabiao_2"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp" />
+</RelativeLayout>

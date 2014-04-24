@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/layout_title">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_back"
+            android:src="@drawable/back"
+            android:background="@null" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_regist"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input"
+        android:layout_marginTop="110dp"
+        android:layout_below="@+id/layout_title"
+        android:id="@+id/edit_mail"
+        android:hint="邮箱"
+        android:textSize="20dp"
+        android:singleLine="true"
+        android:textIsSelectable="false"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="20dp"
+        android:textColor="#464646"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/edit_mail"
+        android:id="@+id/edit_password"
+        android:hint="密码"
+        android:textSize="20dp"
+        android:singleLine="true"
+        android:textIsSelectable="false"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="20dp"
+        android:inputType="textPassword"
+        android:textColor="#464646"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tip"
+        android:layout_below="@+id/edit_password"
+        android:text="不少于6个英文字母"
+        android:layout_marginTop="10dp"
+        android:textColor="#787878"
+        android:textSize="16dp"
+        android:layout_alignLeft="@+id/edit_password"
+        android:textStyle="bold" />
+
+    <include layout="@layout/arrow_next"/>
+</RelativeLayout>
