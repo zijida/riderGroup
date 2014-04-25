@@ -97,7 +97,7 @@ public class registNick extends registBase {
         registClickListener(R.id.button_back,clickListener);
 
         //// 自定义字体
-        customFont.setFont((ViewGroup) rootView, getActivity(), "HandelGothicEF-Bold");
+        customFont.setFont(getActivity(),rootView.findViewById(R.id.edit_nickname), "HandelGothicEF-Bold");
 
         return rootView;
     }

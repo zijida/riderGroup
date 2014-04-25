@@ -28,7 +28,16 @@ public class plusActivity extends Activity
         if(view!=null)
         {
             view.setOnClickListener(clickListener);
-            statusMatrix.setButtonStateChangeListener(view,false);
         }
     }
+
+    protected void setDefaultTouchLook(int id,int type)
+    {
+        View view = findViewById(id);
+        if(view!=null)
+        {
+            statusMatrix.setButtonStateChangeListener(view,type);
+        }
+    }
+
 }

@@ -6,16 +6,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.zijida.ridergroup.ui.Interfaces.thdLoginListener;
 import com.zijida.ridergroup.ui.middlefunc.middleToast;
+import com.zijida.ridergroup.ui.util.applicationSettings;
+import com.zijida.ridergroup.ui.util.statusMatrix;
 import com.zijida.ridergroup.ui.util.tencentSsoHelper;
 import com.zijida.ridergroup.ui.util.weiboSsoHelper;
 
-public class LogonSelector extends plusActivity
+public class LogonSelector extends plusActivity implements thdLoginListener
 {
     private tencentSsoHelper tencent;
     private weiboSsoHelper weibo;
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
+
         @Override
         public void onClick(View view) {
             switch (view.getId())
@@ -51,7 +55,7 @@ public class LogonSelector extends plusActivity
 
                 case R.id.id_goto_login:
                 {
-                    middleToast.message(getApplicationContext(),"前往登录界面，请准备...");
+                    middleToast.message(getApplicationContext(), "前往登录界面，请准备...");
                     Intent intent = new Intent(LogonSelector.this,Login.class);
                     LogonSelector.this.startActivity(intent);
                     LogonSelector.this.finish();
@@ -80,6 +84,10 @@ public class LogonSelector extends plusActivity
         registClickListener(R.id.id_login_direct,clickListener);
         registClickListener(R.id.id_goto_login,clickListener);
         registClickListener(R.id.id_goto_regist,clickListener);
+
+        setDefaultTouchLook(R.id.id_login_qq, statusMatrix.MATRIX_GRAY);
+        setDefaultTouchLook(R.id.id_login_weibo,statusMatrix.MATRIX_GRAY);
+        setDefaultTouchLook(R.id.id_login_direct,statusMatrix.MATRIX_GRAY);
     }
 
     @Override
@@ -102,6 +110,12 @@ public class LogonSelector extends plusActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -115,4 +129,30 @@ public class LogonSelector extends plusActivity
         }
     }
 
+    /**
+     *
+     * @param bundle 定义如下：
+     *               key = "id",value = applicationSettings类定义的USER_XX。
+     *               key = "User" value = 微博返回的User变量。
+     */
+    @Override
+    public void onLoginSuccessed(Bundle bundle) {
+        if(bundle==null) return;
+
+        switch (bundle.getInt("id",0))
+        {
+            case applicationSettings.USER_QQ:
+            {
+                applicationSettings as = new applicationSettings(this);
+                as.setUserComeFrome(applicationSettings.USER_QQ);
+            }
+            break;
+
+            case applicationSettings.USER_WB:
+            {
+
+            }
+            break;
+        }
+    }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.zijida.ridergroup.ui.middlefunc.middleToast;
 import com.zijida.ridergroup.ui.util.customFont;
+import com.zijida.ridergroup.ui.util.statusMatrix;
 
 public class Login extends plusActivity {
 
@@ -60,7 +61,10 @@ public class Login extends plusActivity {
         registClickListener(R.id.button_regist,clickListener);
         registClickListener(R.id.button_forgetpassword,clickListener);
 
-        customFont.setFont(null, this, "HandelGothicEF-Bold");
+        setDefaultTouchLook(R.id.button_user_protocal,statusMatrix.MATRIX_GRAY);
+
+        customFont.setFont( this,R.id.textview_user_name, "HandelGothicEF-Bold");
+        customFont.setFont( this,R.id.textview_password, "HandelGothicEF-Bold");
     }
 
 

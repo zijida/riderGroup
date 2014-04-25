@@ -6,12 +6,12 @@
     tools:context="com.zijida.ridergroup.ui.Main">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:id="@+id/id_appicon"
         android:layout_centerHorizontal="true"
         android:background="@drawable/logo"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="80dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/id_goto_login"
-            android:src="@drawable/denglu"
+            android:src="@drawable/button_denglu"
             android:background="@null"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -60,7 +60,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/id_goto_regist"
-            android:src="@drawable/zhuce"
+            android:src="@drawable/button_zhuce"
             android:background="@null"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />

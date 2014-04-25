@@ -121,13 +121,18 @@ public class registBike extends registBase {
         registClickListener(R.id.button_flip,clickListener);
         registClickListener(R.id.button_bikephoto,clickListener);
 
-        gu = new GallaryUtils(getActivity());
-        View view = rootView.findViewById(R.id.button_bikephoto);
-        if(view != null)
-        {
-            gu.showPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,view);
-        }
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        gu = new GallaryUtils(getActivity());
+        View img_view = rootView.findViewById(R.id.button_bikephoto);
+        if(img_view != null)
+        {
+            gu.showPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,img_view);
+        }
     }
 
     @Override
@@ -181,7 +186,7 @@ public class registBike extends registBase {
                 final Bitmap headBitmap = (Bitmap) data.getExtras().get("data");
                 if(headBitmap == null){  return;  }
 
-                ImageUtils.saveTo(CacheUtils.get_cache_route(CacheUtils.PATH_BIKE_IMAGE_CACHE),headBitmap);
+                ImageUtils.saveBitmap(CacheUtils.get_cache_route(CacheUtils.PATH_BIKE_IMAGE_CACHE),headBitmap);
                 gu.showPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,view);
             }
             break;

@@ -65,16 +65,17 @@ public abstract class registBase extends Fragment
         if(view!=null)
         {
             view.setOnClickListener(clickListener);
+        }
+    }
 
-            if(view.getId() == R.id.button_back ||
-                    view.getId() == R.id.button_flip )
-            {
-                statusMatrix.setButtonStateChangeListener(view, true);
-            }
-            else
-            {
-                statusMatrix.setButtonStateChangeListener(view, false);
-            }
+    protected void setDefaultTouchLook(int id,int type)
+    {
+        if(rootView==null) return;
+
+        View view = rootView.findViewById(id);
+        if(view!=null)
+        {
+            statusMatrix.setButtonStateChangeListener(view,type);
         }
     }
 

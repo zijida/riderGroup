@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.View;
@@ -63,7 +64,7 @@ public class GallaryUtils {
         Intent intent = new Intent();
         intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT,tempPhotoUri());
+        // intent.putExtra(MediaStore.EXTRA_OUTPUT,tempPhotoUri());
         ((Activity)context).startActivityForResult(intent,INVOKE_CAMERA);
     }
 
@@ -100,38 +101,6 @@ public class GallaryUtils {
         return Uri.fromFile(file);
     }
 
-    //// 将tmpPhotoUri指向的文件，按参数要求压缩存储到指定路径
-    public void savePhoto(int type,int w,int h)
-    {
-        Toast.makeText(context,"savePhoto from "+tempPhotoUri().getPath(), Toast.LENGTH_LONG).show();
-
-        Bitmap bitmap = ImageUtils.scale_compress(tempPhotoUri().getPath(),w,h);
-        if(bitmap != null)
-        {
-            Toast.makeText(context,"savePhoto to "+CacheUtils.get_cache_route(type), Toast.LENGTH_LONG).show();
-            ImageUtils.saveTo(CacheUtils.get_cache_route(type),bitmap);
-        }
-        else
-        {
-            Toast.makeText(context," FAILED!!! ImageUtils.scale_compress "+tempPhotoUri().getPath(), Toast.LENGTH_LONG).show();
-        }
-    }
-
-    //// 将tmpPhotoUri指向的文件，按VIEW尺寸压缩存储到指定路径
-    public void savePhoto(int type,View view)
-    {
-        savePhoto(type,view.getWidth(),view.getHeight());
-    }
-
-    public void savePhoto(int type,int viewId)
-    {
-        View view = ((Activity)context).findViewById(viewId);
-        if(view != null)
-        {
-             savePhoto(type,view);
-        }
-    }
-
     //// 指定目录下的图片，显示到指定VIEW
     public void showPhoto(int type, View view)
     {
@@ -153,10 +122,18 @@ public class GallaryUtils {
 
     private Bitmap getPicture(int type,View view) {
         // Get the dimensions of the View
-
         int targetW = view.getBackground().getIntrinsicWidth();
         int targetH = view.getBackground().getIntrinsicHeight();
-
-        return ImageUtils.scale_compress(CacheUtils.get_cache_route(type),targetW,targetH);
+        String pic_path = CacheUtils.get_cache_route(type);
+        if(pic_path != null && !pic_path.isEmpty())
+        {
+            Bitmap bmp = BitmapFactory.decodeFile(pic_path);
+            if(bmp.getWidth()>targetW && bmp.getHeight()>targetH)
+            {
+                return ImageUtils.scale_compress(bmp,targetW,targetH);
+            }
+            else return bmp;
+        }
+        else return null;
     }
 }

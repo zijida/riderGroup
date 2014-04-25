@@ -48,7 +48,7 @@ public class tencentSsoHelper {
     {
         if(tencent == null) return;
         /// 预免重复登录
-        pre_relogin();
+        //pre_relogin();
 
         if(!tencent.isSessionValid())
         {
@@ -131,10 +131,10 @@ public class tencentSsoHelper {
                 return;
             }
 
-            token.set_sessionTime(String.valueOf(System.currentTimeMillis()));
+            token.set_sessionTime(System.currentTimeMillis());
             token.set_open_id(o.getString(tencentToken.KEY_OPENID));
             token.set_access_token(o.getString(tencentToken.KEY_ACCESS_TOKEN));
-            token.set_expires_in(o.getString(tencentToken.KEY_EXPIRES_IN));
+            token.set_expires_in(o.getLong(tencentToken.KEY_EXPIRES_IN));
         }
         catch (JSONException je)
         {
@@ -164,13 +164,14 @@ public class tencentSsoHelper {
         }
     }
 
+    ////// 这个函数有问题，导致程序异常，暂未定位问题所在。
     private void pre_relogin()
     {
         if(token==null) return;
         if(token.get_open_id() == null) return;
 
-        long sstime = token.get_integer(tencentToken.KEY_LASTSESSIONTIME);
-        long expire = token.get_integer(tencentToken.KEY_EXPIRES_IN);
+        long sstime = token.get_sessionTime();
+        long expire = token.get_expires_in();
         if(sstime<0 || expire<0) return;
 
         sstime = (System.currentTimeMillis()-sstime)/1000;
@@ -178,6 +179,6 @@ public class tencentSsoHelper {
         if(sstime>expire) return;  // token期限失效判断
 
         tencent.setOpenId(token.get_open_id());
-        tencent.setAccessToken(token.get_access_token(),token.get_expires_in());
+        tencent.setAccessToken(token.get_access_token(),String.valueOf(expire));
     }
 }

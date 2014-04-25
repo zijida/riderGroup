@@ -87,7 +87,7 @@ public class registAge extends registBase {
         registClickListener(R.id.button_back,clickListener);
 
         //// 自定义字体
-        customFont.setFont((ViewGroup) rootView, getActivity(), "HandelGothicEF-Bold");
+        customFont.setFont(getActivity(),rootView.findViewById(R.id.edit_age), "HandelGothicEF-Bold");
         return rootView;
     }
 

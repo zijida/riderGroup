@@ -126,7 +126,7 @@ public class registEmote extends registBase {
         gu = new GallaryUtils(getActivity());
 
         View img_view = rootView.findViewById(R.id.button_headimage);
-        if(view != null)
+        if(img_view != null)
         {
             gu.showPhoto(CacheUtils.PATH_HEAD_IMAGE_CACHE,img_view);
         }
@@ -174,7 +174,8 @@ public class registEmote extends registBase {
                 final Bitmap headBitmap = (Bitmap) data.getExtras().get("data");
                 if(headBitmap == null){  return;  }
 
-                ImageUtils.saveTo(CacheUtils.get_cache_route(CacheUtils.PATH_HEAD_IMAGE_CACHE),headBitmap);
+                Bitmap roundBmp = ImageUtils.toRoundBitmap(headBitmap);
+                ImageUtils.saveBitmap(CacheUtils.get_cache_route(CacheUtils.PATH_HEAD_IMAGE_CACHE),roundBmp);
                 gu.showPhoto(CacheUtils.PATH_HEAD_IMAGE_CACHE,view);
             }
             break;

@@ -2,9 +2,11 @@ package com.zijida.ridergroup.ui.util;
 
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 /**
  * Created by Administrator on 14-3-28.
@@ -20,14 +22,10 @@ import android.view.View;
      每个通道的源值和终值都在0到255的范围内。即使计算结果大于255或小于0，值都将被限制在0到255的范围内。
  */
 public class statusMatrix {
-    /**
-            * 按钮被按下
-    */
-    private final static float[] BUTTON_PRESSED = new float[] {
-            0.7f, 0, 0, 0, 0,
-            0, 0.7f, 0, 0, 0,
-            0, 0, 0.7f, 0, 0,
-            0, 0, 0, 1, 0 };
+    public static final int MATRIX_NOUSE = 0;
+    public static final int MATRIX_GRAY = 1;
+    public static final int MATRIX_COLOR = 2;
+    public static final int TYPE_TAG = 2389;
 
     /**
      * 按钮恢复原状
@@ -36,6 +34,15 @@ public class statusMatrix {
             1, 0, 0, 0, 0,
             0, 1, 0, 0, 0,
             0, 0, 1, 0, 0,
+            0, 0, 0, 1, 0 };
+
+    /**
+            * 整体变暗30%，透明度降30%
+    */
+    private final static float[] BUTTON_GRAY = new float[] {
+            0.7f, 0, 0, 0, 0,
+            0, 0.7f, 0, 0, 0,
+            0, 0, 0.7f, 0, 0,
             0, 0, 0, 1, 0 };
 
     /**
@@ -54,64 +61,46 @@ public class statusMatrix {
         {
             if(v==null || event==null) return false;
 
+            ColorMatrixColorFilter cmcf = null;
+            switch (event.getAction())
+            {
+                case MotionEvent.ACTION_DOWN:
+                {
+                    switch ((Integer)v.getTag())
+                    {
+                        case MATRIX_GRAY:  cmcf = new ColorMatrixColorFilter(BUTTON_GRAY); break;
+                        case MATRIX_COLOR: cmcf = new ColorMatrixColorFilter(BUTTON_COLORED); break;
+                        default: return true;
+                    }
+                }
+                break;
+
+                case  MotionEvent.ACTION_UP:
+                {
+                    cmcf = new ColorMatrixColorFilter(BUTTON_RELEASED);
+                }
+                break;
+            }
+
+            if(cmcf == null) return false;
             Drawable d = v.getBackground();
             if(d==null) return false;
 
-            if(event.getAction() == MotionEvent.ACTION_DOWN)
-            {
-                d.setColorFilter(new ColorMatrixColorFilter(BUTTON_PRESSED));
-                if(Build.VERSION.SDK_INT< Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    v.setBackgroundDrawable(d);
-                }
-                else v.setBackground(d);
-            }
-            else if(event.getAction() == MotionEvent.ACTION_UP)
-            {
-                d.setColorFilter(new ColorMatrixColorFilter(BUTTON_RELEASED));
-                if(Build.VERSION.SDK_INT< Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    v.setBackgroundDrawable(d);
-                }
-                else v.setBackground(d);
-            }
-            return false;
+            d.setColorFilter(cmcf);
+            v.setBackground(d);
+
+            return true;
         }
     };
 
-    private static final View.OnTouchListener touchListener_colored = new View.OnTouchListener() {
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event)
+    public static void setButtonStateChangeListener(View v,int type) {
+        if(v==null) return;
+        if(v instanceof ImageView || v instanceof ImageButton || v instanceof Button)
         {
-            if(v==null || event==null) return false;
+            if(type == MATRIX_NOUSE) return;
 
-            Drawable d = v.getBackground();
-            if(d==null) return false;
-
-            if(event.getAction() == MotionEvent.ACTION_DOWN)
-            {
-                d.setColorFilter(new ColorMatrixColorFilter(BUTTON_COLORED));
-                if(Build.VERSION.SDK_INT< Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    v.setBackgroundDrawable(d);
-                }
-                else v.setBackground(d);
-            }
-            else if(event.getAction() == MotionEvent.ACTION_UP)
-            {
-                d.setColorFilter(new ColorMatrixColorFilter(BUTTON_RELEASED));
-                if(Build.VERSION.SDK_INT< Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    v.setBackgroundDrawable(d);
-                }
-                else v.setBackground(d);
-            }
-            return false;
+            v.setTag(Integer.valueOf(type));
+            v.setOnTouchListener(touchListener);
         }
-    };
-
-    public static void setButtonStateChangeListener(View v,boolean colored) {
-        v.setOnTouchListener(colored?touchListener_colored:touchListener);
     }
 }

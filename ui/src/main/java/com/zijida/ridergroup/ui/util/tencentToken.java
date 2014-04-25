@@ -95,22 +95,22 @@ public class tencentToken extends preferenceIO {
         editor.commit();
     }
 
-    public String get_sessionTime() { return get_value(KEY_LASTSESSIONTIME); }
+    public long get_sessionTime()  { return get_long(KEY_LASTSESSIONTIME); }
+    public long get_expires_in()    { return get_long(KEY_EXPIRES_IN); }
     public String get_gender()      { return get_value(KEY_GENDER); }
     public String get_figure_qq()   { return get_value(KEY_FIGURE_URL_QQ); }
     public String get_figure_space(){ return get_value(KEY_FIGURE_URL_SPACE); }
     public String get_nickname()    { return get_value(KEY_NICK_NAME); }
     public String get_open_id()     { return get_value(KEY_OPENID); }
     public String get_access_token()    { return get_value(KEY_ACCESS_TOKEN); }
-    public String get_expires_in()    { return get_value(KEY_EXPIRES_IN); }
 
-    public void set_sessionTime(String sessionTime)     { set_value(KEY_LASTSESSIONTIME,sessionTime); }
+    public void set_sessionTime(long sessionTime)     { set_long(KEY_LASTSESSIONTIME,sessionTime); }
+    public void set_expires_in(long expiresIn)        { set_long(KEY_EXPIRES_IN,expiresIn); }
     public void set_gender(String gender)               { set_value(KEY_GENDER,gender); }
     public void set_figure_qq(String figureQQ)          { set_value(KEY_FIGURE_URL_QQ,figureQQ); }
     public void set_figure_space(String figureSpace)    { set_value(KEY_FIGURE_URL_SPACE,figureSpace); }
     public void set_nickname(String nickname)           { set_value(KEY_NICK_NAME,nickname); }
     public void set_open_id(String openID)              { set_value(KEY_OPENID, openID); }
     public void set_access_token(String accessToken)    { set_value(KEY_ACCESS_TOKEN,accessToken); }
-    public void set_expires_in(String expiresIn)        { set_value(KEY_EXPIRES_IN,expiresIn); }
 
 }

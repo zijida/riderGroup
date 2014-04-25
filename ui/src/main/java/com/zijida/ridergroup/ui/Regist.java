@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 
 import com.zijida.ridergroup.ui.registfregment.registAge;
 import com.zijida.ridergroup.ui.registfregment.registBase;
@@ -17,12 +20,14 @@ import com.zijida.ridergroup.ui.registfregment.registUser;
 import com.zijida.ridergroup.ui.util.userToken;
 
 public class Regist extends FragmentActivity
-        implements registBase.onFragmentListener
+        implements registBase.onFragmentListener,GestureDetector.OnGestureListener
 {
     private int fragindex = -1;
     private int distance = 0;
     private userToken ut;
     private registBase rb;
+
+    private GestureDetector gd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,8 @@ public class Regist extends FragmentActivity
         setContentView(R.layout.regist);
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
         showFirstFregment();
+
+        gd = new GestureDetector(this,this);
     }
 
     @Override
@@ -117,6 +124,65 @@ public class Regist extends FragmentActivity
         }
     }
 
+    /**
+     * ********************* 以下是触屏手势响应区域  ********************************
+    */
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float v, float v2) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float v, float v2)
+    {
+        if(v>200)
+        {
+            flip2PrevFregment();
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        return gd.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            Intent intent = new Intent(this,LogonSelector.class);
+            intent.putExtra("is_back",1);
+            this.startActivity(intent);
+            this.finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// 加载并初始化Fragment
     private registBase createFregment(int index)
     {

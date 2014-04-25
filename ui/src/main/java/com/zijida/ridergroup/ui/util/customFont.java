@@ -45,8 +45,9 @@ public class customFont {
         }
     }
 
-    public static void setFont(Activity activity,View v,String fontname)
+    public static void setFont(Activity activity,int view_id,String fontname)
     {
+        View v = activity.findViewById(view_id);
         if(v==null) return;
 
         String fontpath = FONT_FORMAT.replace("xxx",fontname);
@@ -55,5 +56,18 @@ public class customFont {
         if(v instanceof TextView) ((TextView)v).setTypeface(tf);
         else if(v instanceof Button)   ((Button)v).setTypeface(tf);
         else if(v instanceof EditText) ((EditText)v).setTypeface(tf);
+    }
+
+
+    public static void setFont(Activity activity,View view,String fontname)
+    {
+        if(view==null) return;
+
+        String fontpath = FONT_FORMAT.replace("xxx",fontname);
+        Typeface tf = Typeface.createFromAsset(activity.getAssets(),fontpath);
+
+        if(view instanceof TextView) ((TextView)view).setTypeface(tf);
+        else if(view instanceof Button)   ((Button)view).setTypeface(tf);
+        else if(view instanceof EditText) ((EditText)view).setTypeface(tf);
     }
 }
