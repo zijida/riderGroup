@@ -33,7 +33,7 @@ public class registNick extends registBase {
                     if(m_listener!=null)
                     {
                         String nickname = get_editText(R.id.edit_nickname);
-                        if(nickname == null)
+                        if(nickname == null || nickname.isEmpty())
                         {
                             Toast.makeText(getActivity(), "昵称不可为空", Toast.LENGTH_LONG).show();
                             return;

@@ -131,7 +131,7 @@ public class registBike extends registBase {
         View img_view = rootView.findViewById(R.id.button_bikephoto);
         if(img_view != null)
         {
-            gu.showPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,img_view);
+            gu.showBackgroundPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,img_view);
         }
     }
 
@@ -168,6 +168,10 @@ public class registBike extends registBase {
         {
             case GallaryUtils.INVOKE_CAMERA:
             {
+                //从intent中获取图片
+                //final Bitmap headBitmap = (Bitmap) data.getExtras().get("data");
+                //if(headBitmap == null){  return;  }
+
                 gu.cropPhoto(gu.tempPhotoUri(),view.getBackground().getIntrinsicWidth(),view.getBackground().getIntrinsicHeight());
             }
             break;
@@ -187,7 +191,7 @@ public class registBike extends registBase {
                 if(headBitmap == null){  return;  }
 
                 ImageUtils.saveBitmap(CacheUtils.get_cache_route(CacheUtils.PATH_BIKE_IMAGE_CACHE),headBitmap);
-                gu.showPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,view);
+                gu.showBackgroundPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,view);
             }
             break;
 

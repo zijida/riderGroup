@@ -70,7 +70,7 @@ public class statusMatrix {
                     {
                         case MATRIX_GRAY:  cmcf = new ColorMatrixColorFilter(BUTTON_GRAY); break;
                         case MATRIX_COLOR: cmcf = new ColorMatrixColorFilter(BUTTON_COLORED); break;
-                        default: return true;
+                        default: return false;
                     }
                 }
                 break;
@@ -82,14 +82,16 @@ public class statusMatrix {
                 break;
             }
 
-            if(cmcf == null) return false;
-            Drawable d = v.getBackground();
-            if(d==null) return false;
-
-            d.setColorFilter(cmcf);
-            v.setBackground(d);
-
-            return true;
+            if(cmcf != null)
+            {
+                Drawable d = v.getBackground();
+                if(d != null)
+                {
+                    d.setColorFilter(cmcf);
+                    v.setBackground(d);
+                }
+            }
+            return false;
         }
     };
 

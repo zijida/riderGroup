@@ -1,6 +1,7 @@
 package com.zijida.ridergroup.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -24,10 +25,34 @@ public class plusActivity extends Activity
 
     protected void registClickListener(int id,View.OnClickListener clickListener)
     {
+        if(clickListener == null) return;
+
         View view = findViewById(id);
         if(view!=null)
         {
             view.setOnClickListener(clickListener);
+        }
+    }
+
+    protected void registClickListener(View root,int id,View.OnClickListener clickListener)
+    {
+        if(root == null) return;
+        if(clickListener == null) return;
+
+        View view = root.findViewById(id);
+        if(view!=null)
+        {
+            view.setOnClickListener(clickListener);
+        }
+    }
+
+    protected void registClickListener2(int id,View.OnClickListener clickListener)
+    {
+        View view = findViewById(id);
+        if(view!=null)
+        {
+            view.setOnClickListener(clickListener);
+            statusMatrix.setButtonStateChangeListener(view,statusMatrix.MATRIX_GRAY);
         }
     }
 
@@ -40,4 +65,10 @@ public class plusActivity extends Activity
         }
     }
 
+    protected void jump2Activity(java.lang.Class cls )
+    {
+        Intent intent = new Intent(this, cls);
+        this.startActivity(intent);
+        this.finish();
+    }
 }

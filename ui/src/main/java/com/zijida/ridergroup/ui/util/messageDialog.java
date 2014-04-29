@@ -46,8 +46,9 @@ public class messageDialog extends Dialog
         message = (TextView)findViewById(R.id.dlg_message);
         positive = (Button)findViewById(R.id.dlg_positiveButton);
         negative = (Button)findViewById(R.id.dlg_negativeButton);
-        statusMatrix.setButtonStateChangeListener(positive,statusMatrix.MATRIX_GRAY);
-        statusMatrix.setButtonStateChangeListener(negative,statusMatrix.MATRIX_GRAY);
+
+        statusMatrix.setButtonStateChangeListener(positive,statusMatrix.MATRIX_COLOR);
+        statusMatrix.setButtonStateChangeListener(negative,statusMatrix.MATRIX_COLOR);
 
         positive.setOnClickListener(new View.OnClickListener() {
             @Override

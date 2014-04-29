@@ -11,6 +11,7 @@ import com.tencent.connect.share.QQShare;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
+import com.zijida.ridergroup.ui.Interfaces.thdLoginListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ public class tencentSsoHelper {
     public Context context;
     public UserInfo userinfo;
     public tencentToken token;
+    private thdLoginListener callback_completeListener;
 
     public tencentSsoHelper(Context context)
     {
@@ -91,6 +93,10 @@ public class tencentSsoHelper {
         tencent.shareToQQ((Activity)context,params,new baseUiListener());
     }
 
+    public void setComplementListener(thdLoginListener _listener)
+    {
+        this.callback_completeListener = _listener;
+    }
     //*****************************************************************************************************************//
 
     private class baseUiListener implements IUiListener
@@ -117,6 +123,12 @@ public class tencentSsoHelper {
             public void onComplete(Object o)
             {
                 save_userinfo((JSONObject)o);
+                if(callback_completeListener != null)
+                {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id",applicationSettings.USER_QQ);
+                    callback_completeListener.onLoginSuccessed(bundle);
+                }
             }
         });
     }

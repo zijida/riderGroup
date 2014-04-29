@@ -33,10 +33,10 @@ public class Regist extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ut = new userToken(this);
+
         setContentView(R.layout.regist);
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
         showFirstFregment();
-
         gd = new GestureDetector(this,this);
     }
 

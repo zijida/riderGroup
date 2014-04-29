@@ -106,7 +106,7 @@ public abstract class registBase extends Fragment
         // 创建警示对话框
         messageDialog flipwarn_dialog = new messageDialog(getActivity());
         // 设置对话框标题
-        flipwarn_dialog.setTitle(getString(R.string.app_name));
+        flipwarn_dialog.setTitle(getString(R.string.app_name_cn));
         // 设置对话框消息
         flipwarn_dialog.setMessage(getString(R.string.warning_flipping));
         // 添加选择按钮并注册监听

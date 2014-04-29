@@ -7,9 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.zijida.ridergroup.ui.Interfaces.thdLoginListener;
-import com.zijida.ridergroup.ui.middlefunc.middleToast;
 import com.zijida.ridergroup.ui.util.applicationSettings;
-import com.zijida.ridergroup.ui.util.statusMatrix;
 import com.zijida.ridergroup.ui.util.tencentSsoHelper;
 import com.zijida.ridergroup.ui.util.weiboSsoHelper;
 
@@ -29,6 +27,7 @@ public class LogonSelector extends plusActivity implements thdLoginListener
                     if(weibo==null)
                     {
                         weibo = new weiboSsoHelper(LogonSelector.this);
+                        weibo.setComplementListener(LogonSelector.this);
                     }
                     weibo.login();
                 }
@@ -39,6 +38,7 @@ public class LogonSelector extends plusActivity implements thdLoginListener
                     if(tencent==null)
                     {
                         tencent = new tencentSsoHelper(LogonSelector.this);
+                        tencent.setComplementListener(LogonSelector.this);
                     }
                     tencent.login();
                 }
@@ -46,28 +46,19 @@ public class LogonSelector extends plusActivity implements thdLoginListener
 
                 case R.id.id_login_direct:
                 {
-                    middleToast.message(getApplicationContext(),"前往主界面，请准备...");
-                    Intent intent = new Intent(LogonSelector.this, ContextMain.class);
-                    LogonSelector.this.startActivity(intent);
-                    LogonSelector.this.finish();
+                    jump2Activity(ContextMain.class);
                 }
                 break;
 
                 case R.id.id_goto_login:
                 {
-                    middleToast.message(getApplicationContext(), "前往登录界面，请准备...");
-                    Intent intent = new Intent(LogonSelector.this,Login.class);
-                    LogonSelector.this.startActivity(intent);
-                    LogonSelector.this.finish();
+                    jump2Activity(Login.class);
                 }
                 break;
 
                 case R.id.id_goto_regist:
                 {
-                    middleToast.message(getApplicationContext(),"前往注册界面，请准备...");
-                    Intent intent = new Intent(LogonSelector.this,Regist.class);
-                    LogonSelector.this.startActivity(intent);
-                    LogonSelector.this.finish();
+                    jump2Activity(Regist.class);
                 }
                 break;
             }
@@ -79,15 +70,12 @@ public class LogonSelector extends plusActivity implements thdLoginListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logon_selector);
 
-        registClickListener(R.id.id_login_qq,clickListener);
-        registClickListener(R.id.id_login_weibo,clickListener);
-        registClickListener(R.id.id_login_direct,clickListener);
+        registClickListener2(R.id.id_login_qq,clickListener);
+        registClickListener2(R.id.id_login_weibo,clickListener);
+        registClickListener2(R.id.id_login_direct,clickListener);
         registClickListener(R.id.id_goto_login,clickListener);
         registClickListener(R.id.id_goto_regist,clickListener);
 
-        setDefaultTouchLook(R.id.id_login_qq, statusMatrix.MATRIX_GRAY);
-        setDefaultTouchLook(R.id.id_login_weibo,statusMatrix.MATRIX_GRAY);
-        setDefaultTouchLook(R.id.id_login_direct,statusMatrix.MATRIX_GRAY);
     }
 
     @Override
@@ -145,6 +133,7 @@ public class LogonSelector extends plusActivity implements thdLoginListener
             {
                 applicationSettings as = new applicationSettings(this);
                 as.setUserComeFrome(applicationSettings.USER_QQ);
+                jump2Activity(ContextMain.class);
             }
             break;
 

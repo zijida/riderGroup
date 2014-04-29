@@ -44,7 +44,7 @@ public class registUser extends registBase {
                     if(m_listener!=null)
                     {
                         String email = get_editText(R.id.edit_mail);
-                        if(email == null)
+                        if(email == null || email.isEmpty())
                         {
                             Toast.makeText(getActivity(),"邮箱不可为空",Toast.LENGTH_LONG).show();
                             return;
@@ -60,7 +60,7 @@ public class registUser extends registBase {
                         }
 
                         String password = get_editText(R.id.edit_password);
-                        if(password == null)
+                        if(password == null || password.isEmpty())
                         {
                             Toast.makeText(getActivity(),"密码不可为空",Toast.LENGTH_LONG).show();
                             return;

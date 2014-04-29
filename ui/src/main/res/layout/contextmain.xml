@@ -192,13 +192,10 @@
     </RelativeLayout>
 
 
-    <include layout="@layout/merge_buttons"
+    <RelativeLayout
         android:id="@+id/layout_button_panel"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/layout_screen"/>
-
-    <include layout="@layout/context_menu"
-        android:id="@+id/layout_menu_panel"/>
 
 </RelativeLayout>

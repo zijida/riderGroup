@@ -7,11 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.io.File;
 
@@ -64,8 +64,8 @@ public class GallaryUtils {
         Intent intent = new Intent();
         intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        // intent.putExtra(MediaStore.EXTRA_OUTPUT,tempPhotoUri());
-        ((Activity)context).startActivityForResult(intent,INVOKE_CAMERA);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,tempPhotoUri());
+        ((Activity)context).startActivityForResult(intent, INVOKE_CAMERA);
     }
 
     public void cropPhoto(Uri uri,int outX,int outY)
@@ -81,7 +81,7 @@ public class GallaryUtils {
         intent.putExtra("outputY", outY);
         intent.putExtra("scale", true); //设置是否允许拉伸
         intent.putExtra("return-data", true);
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());//设置输出格式
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());//设置输出格式
         ((Activity)context).startActivityForResult(intent, INVOKE_CROP);
     }
 
@@ -104,20 +104,29 @@ public class GallaryUtils {
     //// 指定目录下的图片，显示到指定VIEW
     public void showPhoto(int type, View view)
     {
-        if(view==null)
+        if(view==null)  return;
+        Bitmap bmp = getPicture(type,view);
+        if(bmp!=null)
         {
-            Toast.makeText(context,"照片不能显示：错误的VIEW ID.", Toast.LENGTH_SHORT).show();
-            return;
+            ((ImageButton)view).setImageBitmap(bmp);
+            ((ImageButton)view).invalidate();
         }
+    }
+
+    //// 指定目录下的图片，显示到指定VIEW
+    public void showBackgroundPhoto(int type, View view)
+    {
+        if(view==null)  return;
 
         Bitmap bmp = getPicture(type,view);
-        if(bmp==null)
+        if(bmp!=null)
         {
-            Toast.makeText(context,"照片不能显示：没有找到图片.", Toast.LENGTH_SHORT).show();
-            return;
+            ((ImageButton)view).setBackground(new BitmapDrawable(context.getResources(), bmp));
         }
-        ((ImageButton)view).setImageBitmap(bmp);
-        ((ImageButton)view).invalidate();
+        else
+        {
+           // ((ImageButton)view).setBackgroundResource(R.drawable.take_photo);
+        }
     }
 
     private Bitmap getPicture(int type,View view) {
@@ -128,6 +137,8 @@ public class GallaryUtils {
         if(pic_path != null && !pic_path.isEmpty())
         {
             Bitmap bmp = BitmapFactory.decodeFile(pic_path);
+            if(bmp==null) return null;
+
             if(bmp.getWidth()>targetW && bmp.getHeight()>targetH)
             {
                 return ImageUtils.scale_compress(bmp,targetW,targetH);
