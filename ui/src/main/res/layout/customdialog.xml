@@ -49,7 +49,9 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:background="#dfdfdf"
+            android:textColor="@color/com_sina_weibo_sdk_blue"/>
 
         <Button
             style="@style/DialogText"
@@ -58,6 +60,8 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:background="#dfdfdf"
+            android:textColor="@color/com_sina_weibo_sdk_blue" />
     </LinearLayout>
 </LinearLayout>

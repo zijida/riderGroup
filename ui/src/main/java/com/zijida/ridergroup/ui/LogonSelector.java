@@ -6,12 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.zijida.ridergroup.ui.Interfaces.thdLoginListener;
+import com.zijida.ridergroup.ui.Interfaces.IThirdLoginListener;
 import com.zijida.ridergroup.ui.util.applicationSettings;
 import com.zijida.ridergroup.ui.util.tencentSsoHelper;
 import com.zijida.ridergroup.ui.util.weiboSsoHelper;
 
-public class LogonSelector extends plusActivity implements thdLoginListener
+public class LogonSelector extends plusActivity implements IThirdLoginListener
 {
     private tencentSsoHelper tencent;
     private weiboSsoHelper weibo;

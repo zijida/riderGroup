@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.zijida.ridergroup.ui.R;
@@ -28,7 +27,6 @@ import java.io.File;
  *
  */
 public class registEmote extends registBase {
-    private ImageButton buttonNext;
     private GallaryUtils gu;
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
@@ -168,6 +166,14 @@ public class registEmote extends registBase {
             }
             break;
 
+            case GallaryUtils.INVOKE_PICSTORE:
+            {
+                /// 来源：系统图片目录
+                Uri uri = data.getData();
+                gu.cropPhoto(uri,view.getBackground().getIntrinsicWidth(),view.getBackground().getIntrinsicHeight());
+            }
+            break;
+
             case GallaryUtils.INVOKE_CROP:
             {
                 //从intent中获取图片
@@ -177,14 +183,6 @@ public class registEmote extends registBase {
                 Bitmap roundBmp = ImageUtils.toRoundBitmap(headBitmap);
                 ImageUtils.saveBitmap(CacheUtils.get_cache_route(CacheUtils.PATH_HEAD_IMAGE_CACHE),roundBmp);
                 gu.showBackgroundPhoto(CacheUtils.PATH_HEAD_IMAGE_CACHE,view);
-            }
-            break;
-
-            case GallaryUtils.INVOKE_PICSTORE:
-            {
-                /// 来源：系统图片目录
-                Uri uri = data.getData();
-                gu.cropPhoto(uri,view.getBackground().getIntrinsicWidth(),view.getBackground().getIntrinsicHeight());
             }
             break;
         }

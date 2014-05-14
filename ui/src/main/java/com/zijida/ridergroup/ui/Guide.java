@@ -85,7 +85,6 @@ public class Guide extends Activity implements ViewPager.OnPageChangeListener {
         scrollstate = state;
     }
 
-
     private class guideAdapter extends PagerAdapter
     {
         @Override
@@ -99,16 +98,16 @@ public class Guide extends Activity implements ViewPager.OnPageChangeListener {
         }
 
         @Override
-        public Object instantiateItem(View collection, int position)
+        public Object instantiateItem(ViewGroup container, int position)
         {
-            ((ViewPager)collection).addView(items.get(position));
+            container.addView(items.get(position));
             return items.get(position);
         }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object)
         {
-            ((ViewPager)container).removeView(items.get(position));
+            container.removeView(items.get(position));
         }
     }
 

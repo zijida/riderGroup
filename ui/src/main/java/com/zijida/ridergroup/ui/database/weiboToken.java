@@ -1,10 +1,11 @@
-package com.zijida.ridergroup.ui.util;
+package com.zijida.ridergroup.ui.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.User;
+import com.zijida.ridergroup.ui.util.preferenceIO;
 
 /**
  * Created by shenjun on 14-4-16.

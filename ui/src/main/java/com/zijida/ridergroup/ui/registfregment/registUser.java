@@ -140,6 +140,10 @@ public class registUser extends registBase {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
+        // 逻辑：设定button_next初值为disabled,直到用户输入邮箱密码恢复可用。
+        // 此逻辑暂未生效
+        //setViewEnable(R.id.button_next,false);
+
         if(m_listener != null)
         {
             set_editText(R.id.edit_mail,m_listener.getUserToken().get_email());

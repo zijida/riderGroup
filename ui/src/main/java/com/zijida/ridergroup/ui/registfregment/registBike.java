@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.zijida.ridergroup.ui.R;
@@ -28,7 +27,6 @@ import java.io.File;
  *
  */
 public class registBike extends registBase {
-    private ImageButton buttonNext;
     private GallaryUtils gu;
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
@@ -190,7 +188,7 @@ public class registBike extends registBase {
                 final Bitmap headBitmap = (Bitmap) data.getExtras().get("data");
                 if(headBitmap == null){  return;  }
 
-                ImageUtils.saveBitmap(CacheUtils.get_cache_route(CacheUtils.PATH_BIKE_IMAGE_CACHE),headBitmap);
+                ImageUtils.saveBitmap(CacheUtils.get_cache_route(CacheUtils.PATH_BIKE_IMAGE_CACHE), headBitmap);
                 gu.showBackgroundPhoto(CacheUtils.PATH_BIKE_IMAGE_CACHE,view);
             }
             break;

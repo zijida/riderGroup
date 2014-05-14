@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="DialogText">
-        <item name="android:textColor">#FF000000</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:background">@null</item>
     </style>
 
     <style name="DialogText.Title">
+        <item name="android:textColor">#FF000000</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@null</item>

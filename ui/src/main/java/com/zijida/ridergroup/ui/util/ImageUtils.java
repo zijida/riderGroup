@@ -39,6 +39,12 @@ public class ImageUtils {
         }
         while (baos.toByteArray().length/1024 > target_size);
 
+        if(image!=null)
+        {
+            if(!image.isRecycled()) image.recycle();
+            image = null;
+        }
+
         if(baos.toByteArray().length<= 1) return null;
 
         ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
@@ -221,6 +227,10 @@ public class ImageUtils {
 
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, src, dst, paint);
+        if(!bitmap.isRecycled())
+        {
+            bitmap.recycle();
+        }
         return output;
     }
 
@@ -233,6 +243,10 @@ public class ImageUtils {
         if(bmp != null)
         {
             saveBitmap(savePath,bmp);
+            if(!bmp.isRecycled())
+            {
+                bmp.recycle();
+            }
         }
     }
 
@@ -245,6 +259,10 @@ public class ImageUtils {
         if(bmp != null)
         {
             saveBitmap(savePath,bmp);
+            if(!bmp.isRecycled())
+            {
+                bmp.recycle();
+            }
         }
     }
 }

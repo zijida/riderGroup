@@ -11,7 +11,7 @@ import android.widget.EditText;
 import com.zijida.ridergroup.ui.R;
 import com.zijida.ridergroup.ui.util.messageDialog;
 import com.zijida.ridergroup.ui.util.statusMatrix;
-import com.zijida.ridergroup.ui.util.userToken;
+import com.zijida.ridergroup.ui.database.userToken;
 
 /**
  * Created by Administrator on 14-3-28.
@@ -65,6 +65,17 @@ public abstract class registBase extends Fragment
         if(view!=null)
         {
             view.setOnClickListener(clickListener);
+        }
+    }
+
+    protected void setViewEnable(int view_id,boolean enable)
+    {
+        if(rootView==null) return;
+
+        View view = rootView.findViewById(view_id);
+        if(view!=null)
+        {
+            view.setEnabled(enable);
         }
     }
 

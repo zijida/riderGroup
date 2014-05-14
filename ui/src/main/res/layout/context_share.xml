@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundx">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_share_grade"
+        android:textColor="#b4b4b4"
+        android:textSize="32dp"
+        android:text="骑行成绩"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_ridename"
+        android:layout_below="@+id/title_share_grade"
+        android:textColor="#464646"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/input"
+        android:hint="骑行名称"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:singleLine="true"
+        android:selectAllOnFocus="false"
+        android:focusable="true" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_grade"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/layout_grade_panel"
+        android:layout_below="@+id/edit_ridename"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_time_range_value"
+            android:text="2014-05-07     18:32 - 20:10"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_range_text"
+            android:layout_below="@+id/text_time_range_value"
+            android:text="骑行距离"
+            android:layout_centerHorizontal="true"
+            android:textIsSelectable="false"
+            android:textColor="#848484"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_range_panel"
+            android:layout_below="@+id/text_range_text"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_range_total_value"
+                android:text="102"
+                android:textColor="#a2cd39"
+                android:textSize="60dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_range_unit"
+                android:text="km"
+                android:textColor="#a2cd39"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_time_speed"
+            android:layout_below="@+id/layout_range_panel">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/text_ridetime_text"
+                    android:text="骑行时间"
+                    android:textColor="#848484" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_time_panel"
+                    android:layout_below="@+id/text_ridetime_text"
+                    android:layout_gravity="center_horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_time_total_value"
+                        android:text="6:04:12"
+                        android:textColor="#848484"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="h"
+                        android:textColor="#848484"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_speed_text"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="平均速度"
+                    android:textColor="#848484" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_speed_panel"
+                    android:layout_below="@+id/text_speed_text"
+                    android:layout_gravity="center_horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_speed_total_value"
+                        android:text="18"
+                        android:textColor="#848484"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="kmh"
+                        android:textColor="#848484"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_share"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/layout_share_panel"
+        android:layout_below="@+id/layout_grade_panel"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_share_text"
+            android:text="分享"
+            android:layout_centerHorizontal="true"
+            android:textIsSelectable="false"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_share_to"
+            android:layout_below="@+id/text_share_text">
+
+            <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/button_share_wb"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/drawitem_share_wb"
+                    android:background="@null"
+                    android:layout_centerInParent="true" />
+
+            <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/button_share_wx"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/drawitem_share_wx"
+                    android:background="@null"
+                    android:layout_centerInParent="true" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/layout_bottom_panel"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="false"
+        android:layout_below="@+id/layout_share_panel">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/button_no_save"
+            android:background="@null"
+            android:textColor="#848484"
+            android:textSize="20dp"
+            android:text="取消"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/button_save"
+            android:background="@null"
+            android:textColor="#848484"
+            android:textSize="20dp"
+            android:text="保存"/>
+    </LinearLayout>
+</RelativeLayout>

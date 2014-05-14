@@ -5,23 +5,116 @@
     android:id="@+id/layout_menu"
     android:layout_width="260dp"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:alpha="0.6">
+    android:background="@drawable/backgroundx">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/image_head_emote"
-        android:src="@drawable/default_head_emote"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:id="@+id/layout_user_panel"
+        android:paddingTop="30dp"
+        android:paddingBottom="70dp"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_head_emote"
+            android:src="@drawable/default_head_emote"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_nickname"
+            android:text="请登录"
+            android:layout_below="@+id/image_head_emote"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mi_arrow"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_nickname"
-        android:text="Steven"
-        android:layout_below="@+id/image_head_emote"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/layout_menu_panel"
+        android:layout_alignParentBottom="true">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/panel_my_center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="#e0151515">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_user"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mi_user_center"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_tip_2"
+                android:layout_gravity="center_vertical"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:text="20+"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/panel_around_people"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_location_d"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40dp"
+                android:baselineAlignBottom="false" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mi_near_rider_d"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/panel_settings"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_setting_d"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40dp"
+                android:baselineAlignBottom="false" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mi_settings_d"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
+    </LinearLayout>
 </com.zijida.ridergroup.ui.util.sideMenu>

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="weibosdkcore">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/ui/build/exploded-bundles/RiderGroupWeiboUnspecified.aar/libs/weibosdkcore.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ui/build/exploded-aar/riderGroup/weibo/unspecified/libs/weibosdkcore.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

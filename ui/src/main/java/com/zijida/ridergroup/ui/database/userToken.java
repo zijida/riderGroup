@@ -1,7 +1,9 @@
-package com.zijida.ridergroup.ui.util;
+package com.zijida.ridergroup.ui.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.zijida.ridergroup.ui.util.preferenceIO;
 
 /**
  * Created by SHENJUN on 14-4-22.

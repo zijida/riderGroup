@@ -16,7 +16,8 @@ import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.openapi.UsersAPI;
 import com.sina.weibo.sdk.openapi.models.User;
-import com.zijida.ridergroup.ui.Interfaces.thdLoginListener;
+import com.zijida.ridergroup.ui.Interfaces.IThirdLoginListener;
+import com.zijida.ridergroup.ui.database.weiboToken;
 
 /**
  * Created by shenjun on 14-4-16.
@@ -34,7 +35,7 @@ public class weiboSsoHelper {
     private SsoHandler ssoHandler;  // 仅当SDK支持SSO时有效
     private WeiboAuth auth;
     private AuthListener listener;
-    private thdLoginListener callback_completeListener;
+    private IThirdLoginListener callback_completeListener;
 
     @SuppressLint("SimpleDateFormat")
     private class AuthListener implements WeiboAuthListener {
@@ -43,7 +44,7 @@ public class weiboSsoHelper {
             Oauth2AccessToken oat = Oauth2AccessToken.parseAccessToken(bundle);
             if(oat.isSessionValid())
             {
-                weiboToken.writeAccessToke(context.getApplicationContext(),oat);
+                weiboToken.writeAccessToke(context.getApplicationContext(), oat);
 
                 UsersAPI ua = new UsersAPI(oat);
                 ua.show(Long.parseLong(oat.getUid()),new RequestListener() {
@@ -107,7 +108,7 @@ public class weiboSsoHelper {
         callback_completeListener = null;
     }
 
-    public void setComplementListener(thdLoginListener _listener)
+    public void setComplementListener(IThirdLoginListener _listener)
     {
         this.callback_completeListener = _listener;
     }

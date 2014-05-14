@@ -6,7 +6,7 @@ import android.os.Bundle;
  * Created by SHENJUN on 14-4-25.
  * Create in RiderGroup
  */
-public interface thdLoginListener {
+public interface IThirdLoginListener {
     /**
      * 定义用于在第三方登录成功后回调的方法
      * @param bundle 定义如下：

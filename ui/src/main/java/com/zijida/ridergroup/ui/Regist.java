@@ -17,7 +17,7 @@ import com.zijida.ridergroup.ui.registfregment.registEmote;
 import com.zijida.ridergroup.ui.registfregment.registGender;
 import com.zijida.ridergroup.ui.registfregment.registNick;
 import com.zijida.ridergroup.ui.registfregment.registUser;
-import com.zijida.ridergroup.ui.util.userToken;
+import com.zijida.ridergroup.ui.database.userToken;
 
 public class Regist extends FragmentActivity
         implements registBase.onFragmentListener,GestureDetector.OnGestureListener

@@ -1,8 +1,10 @@
-package com.zijida.ridergroup.ui.util;
+package com.zijida.ridergroup.ui.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
+
+import com.zijida.ridergroup.ui.util.preferenceIO;
 
 import org.json.JSONException;
 import org.json.JSONObject;

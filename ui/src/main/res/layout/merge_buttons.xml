@@ -10,14 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_lock"
-        android:background="@drawable/button_lock"
+        android:background="@drawable/button_lock_down"
         android:layout_centerInParent="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_done"
-        android:background="@drawable/button_done"
+        android:background="@drawable/drawitem_done"
         android:layout_centerInParent="true"
         android:layout_toLeftOf="@+id/button_lock"
         android:layout_marginRight="10dp" />
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_pause"
-        android:background="@drawable/button_pause"
+        android:background="@drawable/drawitem_pause"
         android:layout_centerInParent="true"
         android:layout_toRightOf="@+id/button_lock"
         android:layout_marginLeft="10dp" />

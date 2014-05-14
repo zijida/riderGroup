@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scroll_settings">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="30dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_2"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/user_center"/>
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/item_padding">
+            <TextView  style="@style/custom_text"
+                android:text="帐号绑定"/>
+            <TextView  style="@style/custom_text"
+                android:layout_alignParentRight="true"
+                android:text=">"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/fenge_line"/>
+
+        <RelativeLayout style="@style/item_padding"
+            android:focusableInTouchMode="true">
+            <TextView  style="@style/custom_text"
+                android:text="省电模式"/>
+            <TextView  style="@style/custom_text"
+                android:layout_alignParentRight="true"
+                android:text=">"/>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="8dp"
+            android:background="@drawable/fenge_line"/>
+
+        <RelativeLayout style="@style/item_padding">
+            <TextView  style="@style/custom_text"
+                android:text="隐身骑行"/>
+            <TextView  style="@style/custom_text"
+                android:layout_alignParentRight="true"
+                android:text=">"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/fenge_line"/>
+
+        <RelativeLayout style="@style/item_padding"
+            android:focusableInTouchMode="true">
+            <TextView  style="@style/custom_text"
+                android:text="消息提示"/>
+            <TextView  style="@style/custom_text"
+                android:layout_alignParentRight="true"
+                android:text=">"/>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="8dp"
+            android:background="@drawable/fenge_line"/>
+
+        <RelativeLayout style="@style/item_padding">
+            <TextView  style="@style/custom_text"
+                android:text="骑士黑名单"/>
+            <TextView  style="@style/custom_text"
+                android:layout_alignParentRight="true"
+                android:text=">"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/fenge_line"/>
+
+        <RelativeLayout style="@style/item_padding">
+            <TextView  style="@style/custom_text"
+                android:text="推荐给我的朋友"/>
+            <TextView  style="@style/custom_text"
+                android:layout_alignParentRight="true"
+                android:text=">"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/fenge_line"/>
+
+        <RelativeLayout style="@style/item_padding">
+            <TextView  style="@style/custom_text"
+                android:text="关于骑士团"/>
+            <TextView  style="@style/custom_text"
+                android:layout_alignParentRight="true"
+                android:text=">"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/fenge_line"/>
+
+    </LinearLayout>
+</ScrollView>

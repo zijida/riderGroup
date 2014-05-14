@@ -16,11 +16,13 @@ import java.io.File;
 public class CacheUtils {
     public static final int PATH_HEAD_IMAGE_CACHE = 1;
     public static final int PATH_BIKE_IMAGE_CACHE = 2;
+    public static final int PATH_LIVE_RIDING_CACHE = 3;
 
     public static final String ROOT_DIR = "RiderGroup";
     public static final String CACHE_DIR = "cache";
     public static final String HEAD_IMAGE_NAME = "head.cache";
     public static final String BIKE_IMAGE_NAME = "bike.cache";
+    public static final String LIVE_RIDING_RECORD = "live_riding.cache";
 
     public static String get_cache_route(int route_id)
     {
@@ -34,6 +36,10 @@ public class CacheUtils {
             case PATH_HEAD_IMAGE_CACHE:
             {
                 return getCacheFolder()+HEAD_IMAGE_NAME;
+            }
+            case PATH_LIVE_RIDING_CACHE:
+            {
+                return getCacheFolder()+LIVE_RIDING_RECORD;
             }
         }
         return null;

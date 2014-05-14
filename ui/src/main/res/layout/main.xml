@@ -11,7 +11,7 @@
         android:id="@+id/id_appicon"
         android:background="@drawable/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="165dp" />
+        android:layout_marginTop="180dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -19,6 +19,6 @@
         android:background="@drawable/logo_text"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/id_appicon"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="40dp" />
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.zijida.ridergroup.ui.util;
+package com.zijida.ridergroup.ui.database;
 
 /**
  * Created by SHENJUN on 14-4-21.
