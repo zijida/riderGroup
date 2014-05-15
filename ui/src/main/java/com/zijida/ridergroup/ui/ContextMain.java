@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.zijida.ridergroup.ui.Interfaces.IRidingStatusListener;
@@ -18,9 +16,12 @@ import com.zijida.ridergroup.ui.util.ridingStatus;
 import com.zijida.ridergroup.ui.viewModules.CountDown;
 import com.zijida.ridergroup.ui.viewModules.GestureView;
 import com.zijida.ridergroup.ui.viewModules.GradeShare;
+import com.zijida.ridergroup.ui.viewModules.MainMenu;
 import com.zijida.ridergroup.ui.viewModules.PanelStart;
 import com.zijida.ridergroup.ui.viewModules.PanelWorking;
 import com.zijida.ridergroup.ui.viewModules.UseGuide;
+import com.zijida.ridergroup.ui.viewModules.UserCenter;
+import com.zijida.ridergroup.ui.viewModules.UserSettings;
 import com.zijida.ridergroup.ui.viewModules.ViewModuleHelper;
 import com.zijida.ridergroup.ui.viewModules.ViewTuner;
 
@@ -59,72 +60,7 @@ public class ContextMain extends plusActivity
             {
                 case R.id.button_menu:
                 {
-                    show_layer_useguide();
-                }
-                break;
-
-                case R.id.button_start:
-                {
-                    show_layer_countdown();
-                }
-                break;
-
-                case R.id.button_pause:
-                {
-                    if(status.getValue() == ridingStatus.PAUSE) status.setValue(ridingStatus.RUN);
-                    else if(status.getValue() == ridingStatus.RUN) status.setValue(ridingStatus.PAUSE);
-
-                    if(ctrl_panel != null)
-                    {
-                        ((PanelWorking)ctrl_panel).exchage_pause_resume_button();
-                    }
-                }
-                break;
-
-                case R.id.button_lock:
-                {
-                    if(ctrl_panel != null)
-                    {
-                        ((PanelWorking)ctrl_panel).exchange_lock_panel();
-                    }
-                }
-                break;
-
-                case R.id.button_done:
-                {
-                    show_dialog_grade_share();
-                }
-                break;
-
-                case R.id.button_share_wb:
-                {
-                }
-                break;
-
-                case R.id.button_share_wx:
-                {
-                }
-                break;
-
-                case R.id.button_save:
-                {
-                    if(merge_panel != null)
-                    {
-                        ((GradeShare)merge_panel).notifyMessionComplete();
-                        merge_panel.stop();
-                        merge_panel.setLayoutVisiable(false);
-                    }
-                }
-                break;
-
-                case R.id.button_no_save:
-                {
-                    if(merge_panel != null)
-                    {
-                        ((GradeShare)merge_panel).notifyMessionComplete();
-                        merge_panel.stop();
-                        merge_panel.setLayoutVisiable(false);
-                    }
+                    show_layer_menu();
                 }
                 break;
             }
@@ -140,13 +76,9 @@ public class ContextMain extends plusActivity
         }
 
         merge_panel = new GradeShare(this);
-        if(merge_panel.load(R.id.layout_float_layer,GradeShare.layout_res))
+        if(merge_panel.load_to(R.id.layout_float_layer))
         {
             merge_panel.setViewModuleListener(ContextMain.this);
-            merge_panel.registClickListener(R.id.button_share_wb,clickListener);
-            merge_panel.registClickListener(R.id.button_share_wx,clickListener);
-            merge_panel.registClickListener(R.id.button_save,clickListener);
-            merge_panel.registClickListener(R.id.button_no_save,clickListener);
             merge_panel.start();
         }
     }
@@ -160,7 +92,7 @@ public class ContextMain extends plusActivity
         }
 
         merge_panel = new CountDown(ContextMain.this);
-        if(merge_panel.load(R.id.layout_float_layer,CountDown.layout_res))
+        if(merge_panel.load_to(R.id.layout_float_layer))
         {
             merge_panel.setViewModuleListener(ContextMain.this);
             merge_panel.start();
@@ -176,12 +108,59 @@ public class ContextMain extends plusActivity
         }
 
         merge_panel = new UseGuide(ContextMain.this);
-        if(merge_panel.load(R.id.layout_float_layer,UseGuide.layout_res))
+        if(merge_panel.load_to(R.id.layout_float_layer))
         {
             merge_panel.start();
         }
     }
 
+    protected void show_layer_menu()
+    {
+        if(merge_panel != null)
+        {
+            merge_panel.stop();
+            merge_panel = null;
+        }
+
+        merge_panel = new MainMenu(ContextMain.this);
+        if(merge_panel.load_to(R.id.layout_float_layer))
+        {
+            merge_panel.setViewModuleListener(ContextMain.this);
+            merge_panel.start();
+        }
+    }
+
+    protected void show_layer_user_center()
+    {
+        if(merge_panel != null)
+        {
+            merge_panel.stop();
+            merge_panel = null;
+        }
+
+        merge_panel = new UserCenter(this);
+        if(merge_panel.load_to(R.id.layout_float_layer))
+        {
+            merge_panel.setViewModuleListener(ContextMain.this);
+            merge_panel.start();
+        }
+    }
+
+    protected void show_layer_user_settings()
+    {
+        if(merge_panel != null)
+        {
+            merge_panel.stop();
+            merge_panel = null;
+        }
+
+        merge_panel = new UserSettings(this);
+        if(merge_panel.load_to(R.id.layout_float_layer))
+        {
+            merge_panel.setViewModuleListener(ContextMain.this);
+            merge_panel.start();
+        }
+    }
 
     protected void show_layer_working_panel()
     {
@@ -192,11 +171,10 @@ public class ContextMain extends plusActivity
         }
 
         ctrl_panel = new PanelWorking(this);
-        if(ctrl_panel.load(R.id.layout_button_panel,PanelWorking.layout_res))
+        if(ctrl_panel.load_to(R.id.layout_button_panel))
         {
-            ctrl_panel.registClickListener(R.id.button_pause,clickListener);
-            ctrl_panel.registClickListener(R.id.button_lock, clickListener);
-            ctrl_panel.registClickListener(R.id.button_done, clickListener);
+            ctrl_panel.setViewModuleListener(ContextMain.this);
+            ctrl_panel.start();
         }
     }
 
@@ -209,9 +187,10 @@ public class ContextMain extends plusActivity
         }
 
         ctrl_panel = new PanelStart(this);
-        if(ctrl_panel.load(R.id.layout_button_panel,PanelStart.layout_res))
+        if(ctrl_panel.load_to(R.id.layout_button_panel))
         {
-            ctrl_panel.registClickListener(R.id.button_start, clickListener);
+            ctrl_panel.setViewModuleListener(ContextMain.this);
+            ctrl_panel.start();
         }
     }
 
@@ -345,27 +324,6 @@ public class ContextMain extends plusActivity
         customFont.setFont(null, this, "HandelGothicEF-Bold");
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.context, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
@@ -374,7 +332,6 @@ public class ContextMain extends plusActivity
             if(merge_panel != null)
             {
                 merge_panel.stop();
-                merge_panel.clear();
                 merge_panel = null;
                 return true;
             }
@@ -382,6 +339,7 @@ public class ContextMain extends plusActivity
         else if(keyCode == KeyEvent.KEYCODE_MENU)
         {
             //监控/拦截菜单键
+            show_layer_menu();
         }
         else if(keyCode == KeyEvent.KEYCODE_HOME)
         {
@@ -402,7 +360,7 @@ public class ContextMain extends plusActivity
         int id = bundle.getInt("id");
         switch (id)
         {
-            case CountDown.layout_res:
+            case R.layout.count_down:
             {
                 status.setValue(ridingStatus.RUN);
                 show_layer_working_panel();
@@ -410,7 +368,7 @@ public class ContextMain extends plusActivity
             }
             break;
 
-            case GradeShare.layout_res:
+            case R.layout.context_share:
             {
                 status.setValue(ridingStatus.STOP);
                 cancel_timer();
@@ -428,6 +386,46 @@ public class ContextMain extends plusActivity
     @Override
     public void onModuleCancel(Bundle bundle) {
 
+    }
+
+    @Override
+    public void onMessage(Bundle bundle)
+    {
+        if(bundle == null) return;
+        int msg_id = bundle.getInt("message_id");
+
+        switch (msg_id)
+        {
+            case PanelStart.MSG_KEYPRESS_START:
+            {
+                show_layer_countdown();
+            }
+            break;
+
+            case PanelWorking.MSG_KEYPRESS_DONE:
+            {
+                show_dialog_grade_share();
+            }
+            break;
+
+            case PanelWorking.MSG_STATUS_CHANGE:
+            {
+                status.setValue(bundle.getInt("value"));
+            }
+            break;
+
+            case MainMenu.MSG_MENU_USER_CENTER:
+            {
+                show_layer_user_center();
+            }
+            break;
+
+            case MainMenu.MSG_MENU_SETTINGS:
+            {
+                show_layer_user_settings();
+            }
+            break;
+        }
     }
 
     @Override

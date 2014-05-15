@@ -3,7 +3,6 @@ package com.zijida.ridergroup.ui.viewModules;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -18,7 +17,6 @@ import java.util.List;
  * Create in RiderGroup
  */
 public class UseGuide extends ViewModuleHelper {
-    public static final int layout_res = R.layout.client_guide;
     private ViewPager pager;
     private List<View> viewList;
     private int scrollstate = 0;
@@ -99,28 +97,32 @@ public class UseGuide extends ViewModuleHelper {
 
     public UseGuide(Context c) {
         super(c);
-    }
-
-    public boolean load(int layout_id,int res_id)
-    {
-        if(super.load(layout_id,res_id))
-        {
-            setLayoutVisiable(true);
-            return true;
-        }
-        else
-        {
-        }
-        return false;
+        layout_resource_id = R.layout.client_guide;
     }
 
     @Override
-    public boolean OnKeyPress(View view, int i, KeyEvent keyEvent)
+    public boolean load_to(int layout_id)
     {
-        if(KeyEvent.ACTION_DOWN == keyEvent.getAction() && i == KeyEvent.KEYCODE_BACK)
+        if(super.load_to(layout_id))
         {
-            stop();
-            setLayoutVisiable(false);
+            LayoutInflater mInflater = ((Activity)context).getLayoutInflater();
+
+            viewList = new ArrayList<View>();
+            viewList.add(mInflater.inflate(R.layout.client_guide_1, null));
+            viewList.add(mInflater.inflate(R.layout.client_guide_2, null));
+            viewList.add(mInflater.inflate(R.layout.client_guide_3, null));
+            viewList.add(mInflater.inflate(R.layout.client_guide_4, null));
+
+            pager = (ViewPager)root.findViewById(R.id.viewpager_client);
+            if(pager != null)
+            {
+                pager.setAdapter(new GuideAdapter(viewList));
+                pager.setOnPageChangeListener(pageChangeListener);
+                pager.setCurrentItem(0);
+
+                registClickListener(R.id.button_next,clickListener);
+                registClickListener(R.id.menu_button_close,clickListener);
+            }
             return true;
         }
         return false;
@@ -129,37 +131,20 @@ public class UseGuide extends ViewModuleHelper {
     @Override
     public void start()
     {
-
-        LayoutInflater mInflater = ((Activity)context).getLayoutInflater();
-        if(mInflater == null)
-        {
-            return;
-        }
-
-        viewList = new ArrayList<View>();
-        viewList.add(mInflater.inflate(R.layout.client_guide_1, null));
-        viewList.add(mInflater.inflate(R.layout.client_guide_2, null));
-        viewList.add(mInflater.inflate(R.layout.client_guide_3, null));
-        viewList.add(mInflater.inflate(R.layout.client_guide_4, null));
-
-        pager = (ViewPager)root.findViewById(R.id.viewpager_client);
-        if(pager != null)
-        {
-            pager.setAdapter(new GuideAdapter(viewList));
-            pager.setOnPageChangeListener(pageChangeListener);
-            pager.setCurrentItem(0);
-
-            registClickListener(R.id.button_next,clickListener);
-            registClickListener(R.id.menu_button_close,clickListener);
-        }
+        super.start();
     }
 
     @Override
     public void stop()
     {
+        super.stop();
+    }
+
+    @Override
+    public void  clear()
+    {
+        super.clear();
         viewList.clear();
-        setLayoutVisiable(false);
-        clear();
     }
 
 }

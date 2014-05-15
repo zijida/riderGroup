@@ -4,11 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.zijida.ridergroup.ui.R;
@@ -23,10 +18,7 @@ import com.zijida.ridergroup.ui.util.customFont;
  */
 public class CountDown extends ViewModuleHelper
 {
-    public static final int layout_res = R.layout.count_down;
     private int count = 5;
-    private Animation animation;
-
     private CountDownTimer cdt = new CountDownTimer(6000,1000) {
         @Override
         public void onTick(long l) {
@@ -38,15 +30,15 @@ public class CountDown extends ViewModuleHelper
             }
             else
             {
-                cdt.cancel();
-                setLayoutVisiable(false);
+                stop();
                 notifyMessionComplete();
             }
         }
 
         @Override
-        public void onFinish() {
-            setLayoutVisiable(false);
+        public void onFinish()
+        {
+            stop();
             notifyMessionComplete();
         }
     };
@@ -56,70 +48,14 @@ public class CountDown extends ViewModuleHelper
         if(imListener != null)
         {
             Bundle bundle = new Bundle();
-            bundle.putInt("id",layout_res);
+            bundle.putInt("id",layout_resource_id);
             imListener.onModuleComplete(bundle);
         }
     }
 
     public CountDown(Context c) {
         super(c);
-    }
-
-    public boolean load(int layout_id,int res_id)
-    {
-        if(super.load(layout_id,res_id))
-        {
-            customFont.setFont((Activity)context,R.id.text_count, "HandelGothicEF-Bold");
-            setLayoutVisiable(true);
-            loadAnimation();
-            return true;
-        }
-        else
-        {
-        }
-        return false;
-    }
-
-    @Override
-    public void start()
-    {
-        cdt.start();
-    }
-
-    @Override
-    public void stop()
-    {
-        cdt.cancel();
-    }
-
-    @Override
-    public boolean OnKeyPress(View view, int i, KeyEvent keyEvent)
-    {
-        if(KeyEvent.ACTION_DOWN == keyEvent.getAction() && i == KeyEvent.KEYCODE_BACK)
-        {
-            stop();
-            setLayoutVisiable(false);
-            return true;
-        }
-        return false;
-    }
-
-    private void start_animation()
-    {
-        TextView v = (TextView)root.findViewById(R.id.text_count);
-        if(v != null)
-        {
-            v.startAnimation(animation);
-        }
-    }
-
-    private void stop_animation()
-    {
-        TextView v = (TextView)root.findViewById(R.id.text_count);
-        if(v != null)
-        {
-            v.startAnimation(animation);
-        }
+        layout_resource_id = R.layout.count_down;
     }
 
     private void assignCountNumber()
@@ -131,30 +67,33 @@ public class CountDown extends ViewModuleHelper
         }
     }
 
-    private Animation loadAnimation()
+    @Override
+    public boolean load_to(int layout_id)
     {
-        if(animation==null)
+        if(super.load_to(layout_id))
         {
-            animation = AnimationUtils.loadAnimation(context,R.anim.count_down);
-            animation.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation _animation) {
-                    Log.d("zijida","onAnimationStart");
-                    //setViewVisible(true);
-                }
-
-                @Override
-                public void onAnimationEnd(Animation _animation) {
-                    //setViewVisible(false);
-                    Log.d("zijida","onAnimationEnd");
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation _animation) {
-                    Log.d("zijida","onAnimationRepeat");
-                }
-            });
+            customFont.setFont((Activity)context,R.id.text_count, "HandelGothicEF-Bold");
+            return true;
         }
-        return animation;
+        else
+        {
+        }
+        return false;
     }
+
+    @Override
+    public void start()
+    {
+        super.start();
+        cdt.start();
+    }
+
+    @Override
+    public void stop()
+    {
+        cdt.cancel();
+        super.stop();
+    }
+
+
 }

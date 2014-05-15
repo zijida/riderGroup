@@ -32,13 +32,8 @@ public class ViewTuner implements IViewGestureListener {
     @Override
     public boolean OnViewFling(GestureView view, MotionEvent motionEvent, MotionEvent motionEvent2, float v, float v2)
     {
-        return false;
-    }
-
-    @Override
-    public boolean OnViewScroll(GestureView view, MotionEvent motionEvent, MotionEvent motionEvent2, float v, float v2)
-    {
-        if(v>100 || v<-100)
+        int offsetX = (int)(motionEvent2.getX()-motionEvent.getX());
+        if(offsetX>20 || offsetX<-20)
         {
             if(view.secondProp != null)
             {
@@ -51,20 +46,26 @@ public class ViewTuner implements IViewGestureListener {
     }
 
     @Override
+    public boolean OnViewScroll(GestureView view, MotionEvent motionEvent, MotionEvent motionEvent2, float v, float v2)
+    {
+        return false;
+    }
+
+    @Override
     public void OnViewPress(GestureView view, MotionEvent motionEvent)
     {
-        for(GestureView vv : viewGroup)
+        for (GestureView vv : viewGroup)
         {
-            if(vv.equals(view))
+            if (vv.equals(view))
             {
-                if(vv.valueView != null)
+                if (vv.valueView != null)
                 {
-                    vv.valueView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 65f);
+                    vv.valueView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 60f);
                 }
             }
             else
             {
-                if(vv.valueView != null)
+                if (vv.valueView != null)
                 {
                     vv.valueView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 28f);
                 }

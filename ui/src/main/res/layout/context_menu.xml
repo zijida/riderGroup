@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.zijida.ridergroup.ui.util.sideMenu
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_menu"
-    android:layout_width="260dp"
+    android:orientation="vertical"
+    android:layout_width="240dp"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundx">
+    android:layout_alignParentRight="true"
+    android:background="@drawable/backgroundx"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_user_panel"
+        android:layout_weight="2"
         android:paddingTop="30dp"
         android:paddingBottom="70dp"
         android:paddingRight="30dp"
@@ -31,6 +37,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp" />
         <ImageView
+            android:id="@+id/button_hide_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/mi_arrow"
@@ -42,32 +49,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_menu_panel"
-        android:layout_alignParentBottom="true">
+        android:layout_weight="1">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/panel_my_center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:background="#e0151515">
+            style="@style/item_padding"
+            android:id="@+id/panel_my_center">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/menu_user"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="40dp" />
+                android:background="@drawable/menu_user_d"
+                android:layout_gravity="center_vertical" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/mi_user_center"
+                android:background="@drawable/mi_user_center_d"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/menu_tip_2"
+                android:background="@drawable/menu_tip"
+                android:id="@+id/button_tip_message"
                 android:layout_gravity="center_vertical"
                 android:textSize="14dp"
                 android:textStyle="bold"
@@ -75,19 +77,13 @@
                 android:layout_marginLeft="20dp" />
         </LinearLayout>
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/panel_around_people"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp">
+            style="@style/item_padding"
+            android:id="@+id/panel_around_people">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/menu_location_d"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="40dp"
-                android:baselineAlignBottom="false" />
+                android:layout_gravity="center_vertical" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,19 +92,13 @@
                 android:layout_marginLeft="20dp" />
         </LinearLayout>
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/panel_settings"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp">
+            style="@style/item_padding"
+            android:id="@+id/panel_settings">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/menu_setting_d"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="40dp"
-                android:baselineAlignBottom="false" />
+                android:layout_gravity="center_vertical" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,4 +107,4 @@
                 android:layout_marginLeft="20dp" />
         </LinearLayout>
     </LinearLayout>
-</com.zijida.ridergroup.ui.util.sideMenu>
+</LinearLayout>

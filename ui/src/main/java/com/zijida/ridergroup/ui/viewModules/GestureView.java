@@ -40,19 +40,20 @@ public class GestureView
     private GestureDetector.OnGestureListener listener = new GestureDetector.OnGestureListener() {
         @Override
         public boolean onDown(MotionEvent motionEvent) {
-            return false;
+            return true;
         }
 
         @Override
         public void onShowPress(MotionEvent motionEvent) {
-            if(m_listener != null)
-            {
-                m_listener.OnViewPress(GestureView.this,motionEvent);
-            }
         }
 
         @Override
         public boolean onSingleTapUp(MotionEvent motionEvent) {
+            if(m_listener != null)
+            {
+                m_listener.OnViewPress(GestureView.this,motionEvent);
+                return true;
+            }
             return false;
         }
 

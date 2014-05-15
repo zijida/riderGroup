@@ -9,4 +9,5 @@ import android.os.Bundle;
 public interface IViewModuleListener {
     public void onModuleComplete(Bundle bundle);
     public void onModuleCancel(Bundle bundle);
+    public void onMessage(Bundle bundle);
 }

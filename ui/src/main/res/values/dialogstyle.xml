@@ -2,6 +2,7 @@
 <resources>
     <style name="DialogText">
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FF666666</item>
     </style>
 
     <style name="DialogText.Title">

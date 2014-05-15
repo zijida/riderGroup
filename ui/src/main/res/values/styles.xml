@@ -30,7 +30,7 @@
     </style>
 
     <style name="item_background">
-        <item name="android:background">#60282828</item>
+        <item name="android:background">@drawable/menu_item_background</item>
         <item name="android:paddingTop">20dp</item>
         <item name="android:paddingBottom">20dp</item>
         <item name="android:layout_width">fill_parent</item>
